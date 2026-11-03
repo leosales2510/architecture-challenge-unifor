@@ -1,0 +1,34 @@
+server:
+  port: ${PORT:8084}
+
+spring:
+  application:
+    name: pedido-service
+  datasource:
+    # Banco próprio do serviço (Database per Service). Em memória: reinicia limpo a cada execução.
+    url: jdbc:h2:mem:pedido;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# Endereços dos serviços consumidos (contratos REST). Sobrescreva com CATALOGO_URL etc.
+servicos:
+  catalogo:
+    url: ${CATALOGO_URL:http://localhost:8081}
+  estoque:
+    url: ${ESTOQUE_URL:http://localhost:8082}
+  pagamento:
+    url: ${PAGAMENTO_URL:http://localhost:8083}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

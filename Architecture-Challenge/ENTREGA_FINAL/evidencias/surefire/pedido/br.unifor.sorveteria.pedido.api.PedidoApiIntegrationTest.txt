@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.unifor.sorveteria.pedido.api.PedidoApiIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.061 s -- in br.unifor.sorveteria.pedido.api.PedidoApiIntegrationTest

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  POM agregador: serve APENAS para compilar/testar os 4 serviços com um único comando
+  (mvn test). Não há herança nem código compartilhado entre os serviços: cada um tem
+  seu próprio pom.xml com o spring-boot-starter-parent e pode ser construído sozinho.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.unifor.sorveteria</groupId>
+    <artifactId>sorveteria-microsservicos</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>Totem da Sorveteria — agregador de build</name>
+
+    <modules>
+        <module>catalogo-service</module>
+        <module>estoque-service</module>
+        <module>pagamento-service</module>
+        <module>pedido-service</module>
+    </modules>
+</project>

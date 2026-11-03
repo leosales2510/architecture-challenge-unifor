@@ -1,0 +1,30 @@
+1) Catálogo: montagem usa Abstract Factory + Builder + Decorator
+  [ok]    preço do exemplo original (17.50)
+  [ok]    sabor de outra linha (422)
+2) Carrinho: Command + Memento
+  [ok]    adiciona item (17.50)
+  [ok]    segundo item (31.00)
+  [ok]    cupom 10% (27.90)
+  [ok]    desfaz cupom (31.00)
+  [ok]    desfaz item (1)
+  [ok]    cupom expirado (422)
+3) Checkout aprovado: estoque baixa de forma definitiva
+  [ok]    HTTP (200)
+  [ok]    status do pedido (PAGO)
+  [ok]    trilha do Mediator (CHECKOUT_INICIADO>ESTOQUE_RESERVADO>PAGAMENTO_APROVADO>ESTOQUE_CONFIRMADO>PEDIDO_ATUALIZADO)
+  [ok]    saldo SAB-ZERO-MOR (13)
+  [ok]    pedido pago é imutável (409)
+4) Checkout recusado: reserva é liberada (compensação)
+  [ok]    HTTP (402)
+  [ok]    motivo (Saldo insuficiente)
+  [ok]    saldo COB-CALDA devolvido (23)
+  [ok]    nova tentativa com Pix (PAGO)
+5) Operadora fora do ar: 503 e estoque devolvido
+  [ok]    HTTP (503)
+  [ok]    pedido volta ao carrinho (ABERTO)
+  [ok]    saldo CASQ-ZERO devolvido (26)
+6) Estoque insuficiente (Castanha começa com 2)
+  [ok]    HTTP (409)
+  [ok]    SKU em falta (COB-CAST)
+
+Resultado: 22 verificações ok, 0 falhas

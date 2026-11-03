@@ -1,0 +1,15 @@
+Executado em 29/10/2026 15:37 (PDT) — macOS, JDK 25.0.2 (Homebrew), o JDK usado pelo Maven (java.version nos relatórios Surefire)
+[nota de 30/10/2026: a versão anterior deste cabeçalho trazia o `java -version` do PATH (24.0.2), que não é o JDK que executou os testes]
+Apache Maven 3.9.15 (98b2cdbfdb5f1ac8781f537ea9acccaed7922349)
+
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 45, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Reactor Summary for Totem da Sorveteria — agregador de build 1.0.0:
+[INFO] catalogo-service ................................... SUCCESS [  3.304 s]
+[INFO] estoque-service .................................... SUCCESS [  2.539 s]
+[INFO] pagamento-service .................................. SUCCESS [  2.878 s]
+[INFO] pedido-service ..................................... SUCCESS [  2.848 s]
+[INFO] Totem da Sorveteria — agregador de build ........... SUCCESS [  0.000 s]
+[INFO] BUILD SUCCESS

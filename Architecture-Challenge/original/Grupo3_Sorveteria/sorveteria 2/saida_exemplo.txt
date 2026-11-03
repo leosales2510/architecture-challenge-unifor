@@ -1,0 +1,55 @@
+
+=== 1. Escolher a linha (Abstract Factory) ===
+[Cardapio] cliente escolheu a linha Zero
+>> Totem agora usa a FabricaZero (linha Zero Acucar)
+
+=== 2. Montar sorvete com coberturas (Abstract Factory + Decorator) ===
+[Cardapio] cliente montou: morango [calda, granulado]
+[Carrinho] itens:
+   1. Sorvete zero acucar de morango na casquinha integral sem acucar + calda de chocolate + granulado (R$ 17.50)
+[Total] subtotal R$ 17.50 | desconto 0% | total R$ 17.50
+
+=== 3. Adicionar um segundo item (Command + Memento + Mediator) ===
+[Cardapio] cliente montou: limao []
+[Carrinho] itens:
+   1. Sorvete zero acucar de morango na casquinha integral sem acucar + calda de chocolate + granulado (R$ 17.50)
+   2. Sorvete zero acucar de limao na casquinha integral sem acucar (R$ 13.50)
+[Total] subtotal R$ 31.00 | desconto 0% | total R$ 31.00
+
+=== 4. Aplicar cupom (Command) ===
+[Carrinho] itens:
+   1. Sorvete zero acucar de morango na casquinha integral sem acucar + calda de chocolate + granulado (R$ 17.50)
+   2. Sorvete zero acucar de limao na casquinha integral sem acucar (R$ 13.50)
+[Total] subtotal R$ 31.00 | desconto 10% | total R$ 27.90
+
+=== 5. Desfazer o cupom (Memento) ===
+[Carrinho] cliente clicou em DESFAZER
+>> Desfeito: Aplicar cupom SORVETE10
+[Carrinho] itens:
+   1. Sorvete zero acucar de morango na casquinha integral sem acucar + calda de chocolate + granulado (R$ 17.50)
+   2. Sorvete zero acucar de limao na casquinha integral sem acucar (R$ 13.50)
+[Total] subtotal R$ 31.00 | desconto 0% | total R$ 31.00
+
+=== 6. Desfazer o segundo item (Memento) ===
+[Carrinho] cliente clicou em DESFAZER
+>> Desfeito: Adicionar item
+[Carrinho] itens:
+   1. Sorvete zero acucar de morango na casquinha integral sem acucar + calda de chocolate + granulado (R$ 17.50)
+[Total] subtotal R$ 17.50 | desconto 0% | total R$ 17.50
+
+=== 7. Remover um item (Command) ===
+[Carrinho] cliente removeu o item 1
+[Carrinho] itens:
+   (vazio)
+[Total] subtotal R$ 0.00 | desconto 0% | total R$ 0.00
+
+=== 8. Desfazer a remocao (Memento) ===
+[Carrinho] cliente clicou em DESFAZER
+>> Desfeito: Remover item
+[Carrinho] itens:
+   1. Sorvete zero acucar de morango na casquinha integral sem acucar + calda de chocolate + granulado (R$ 17.50)
+[Total] subtotal R$ 17.50 | desconto 0% | total R$ 17.50
+
+=== 9. Finalizar o pedido ===
+[Carrinho] cliente clicou em FINALIZAR
+>> Pedido finalizado. Total a pagar: R$ 17.50

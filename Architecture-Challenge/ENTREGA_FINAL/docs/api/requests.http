@@ -1,0 +1,74 @@
+### Requisições de exemplo (VS Code "REST Client" ou IntelliJ HTTP Client).
+### Suba os serviços antes: ./scripts/start-all.sh
+
+### ---------- catalogo-service (8081)
+GET http://localhost:8081/api/catalogo
+
+###
+POST http://localhost:8081/api/catalogo/montagens
+Content-Type: application/json
+
+{"linha":"ZERO_ACUCAR","saborSku":"SAB-ZERO-MOR","coberturas":["COB-CALDA","COB-GRAN"]}
+
+### Builder rejeita 4 coberturas (422 COMPOSICAO_INVALIDA)
+POST http://localhost:8081/api/catalogo/montagens
+Content-Type: application/json
+
+{"linha":"TRADICIONAL","saborSku":"SAB-TRAD-CHOC","coberturas":["COB-CALDA","COB-GRAN","COB-CHANT","COB-CAST"]}
+
+### ---------- pedido-service (8084)
+# @name novo
+POST http://localhost:8084/api/pedidos
+
+###
+@id = {{novo.response.body.id}}
+
+POST http://localhost:8084/api/pedidos/{{id}}/itens
+Content-Type: application/json
+
+{"linha":"ZERO_ACUCAR","saborSku":"SAB-ZERO-MOR","coberturas":["COB-CALDA","COB-GRAN"],"quantidade":1}
+
+###
+PUT http://localhost:8084/api/pedidos/{{id}}/cupom
+Content-Type: application/json
+
+{"codigo":"SORVETE10"}
+
+###
+POST http://localhost:8084/api/pedidos/{{id}}/desfazer
+
+###
+GET http://localhost:8084/api/pedidos/{{id}}/historico
+
+### Cartões de teste: 4111111111111111 aprova · 4000000000000002 recusa · 4000000000009999 operadora fora do ar
+POST http://localhost:8084/api/pedidos/{{id}}/finalizacao
+Content-Type: application/json
+
+{"metodo":"CARTAO","numeroCartao":"4000000000000002"}
+
+###
+POST http://localhost:8084/api/pedidos/{{id}}/finalizacao
+Content-Type: application/json
+
+{"metodo":"PIX"}
+
+###
+GET http://localhost:8084/api/cupons
+
+### ---------- estoque-service (8082)
+GET http://localhost:8082/api/estoque
+
+###
+PUT http://localhost:8082/api/estoque/COB-CAST
+Content-Type: application/json
+
+{"quantidade":10}
+
+###
+POST http://localhost:8082/api/estoque/disponibilidade
+Content-Type: application/json
+
+{"itens":[{"sku":"SAB-ZERO-LIM","quantidade":5}]}
+
+### ---------- pagamento-service (8083)
+GET http://localhost:8083/api/pagamentos?pedidoId={{id}}

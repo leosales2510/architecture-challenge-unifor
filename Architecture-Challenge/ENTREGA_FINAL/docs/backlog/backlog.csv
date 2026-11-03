@@ -1,0 +1,30 @@
+ID,Titulo,Entrega,Prioridade,Responsavel,Estimativa (h),Depende de,Status,Criterio de aceite
+B01,Diagnóstico do projeto original e matriz de conformidade,E-1,Alta,Membro 1,3,,Feito,docs/01 com veredito dos 5 padrões e matriz de requisitos
+B02,Definir divisão em 4 microsserviços e ADRs,E-1,Alta,Membro 1,4,B01,Feito,docs/02 e docs/05 aprovados pela equipe
+B03,Diagrama de arquitetura (Draw.io + Mermaid),E-1,Alta,Membro 1,3,B02,Feito,arquitetura-microsservicos.drawio abre no diagrams.net
+B04,Diagrama de arquitetura no MDL (mdlmodel.com),E-1,Alta,Membro 1,3,B03,A fazer,Modelo criado na ferramenta seguindo docs/10 e print/link anexado aos slides
+B05,Diagramas de casos de uso / classes / sequência atualizados,E-1,Alta,Membro 1,5,B02,Feito,arquivos em docs/diagramas conferidos contra o código
+B06,catalogo-service: Abstract Factory + Decorator + carga inicial,E-1,Alta,Membro 2,5,B02,Feito,POST /montagens devolve R$ 17.50 no exemplo original
+B07,catalogo-service: Builder com regras de composição,E-1,Alta,Membro 2,3,B06,Feito,422 para sabor de outra linha / >3 coberturas
+B08,Persistência JPA + H2 por serviço (Repository),E-1,Alta,Membro 2,4,B02,Feito,cada serviço com seu banco e console H2
+B09,pagamento-service: Factory Method + Adapter + idempotência,E-1,Alta,Membro 2,5,B08,Feito,cartões de teste aprovam/recusam/simulam timeout
+B10,estoque-service: reservas tudo-ou-nada com bloqueio otimista,E-1,Alta,Membro 3,5,B08,Feito,409 com lista de faltas e saldo intacto
+B11,pedido-service: Command + Memento (adicionar/remover/cupom/desfazer),E-1,Alta,Membro 3,6,B08,Feito,roteiro da Main original reproduzido em teste
+B12,pedido-service: Mediator do checkout com compensação,E-1,Alta,Membro 3,6,B10;B11,Feito,recusa libera reserva; trilha devolvida ao front
+B13,pedido-service: Facade + clientes HTTP + tratamento de erros RFC 7807,E-1,Alta,Membro 4,6,B06;B10,Feito,503 quando outro serviço cai
+B14,Front-end React: montador / carrinho / pagamento / resultado / estoque,E-1,Alta,Membro 4,10,B13,Feito,fluxo completo pelo navegador sem dados estáticos
+B15,Ensaio da demonstração no navegador,E-1,Alta,Membro 4,2,B14,Fazendo,roteiro docs/09 executado do início ao fim sem erros
+B16,Testes unitários e de integração (JUnit 5),E-1,Alta,Membro 5,8,B06;B10;B11,Feito,mvn test com 85 testes verdes
+B17,Smoke test ponta a ponta,E-1,Média,Membro 5,2,B14,Feito,scripts/smoke-test.sh 22/22
+B18,Importar backlog na ferramenta de gestão e atribuir nomes reais,E-1,Alta,Membro 5,1,,A fazer,quadro com colunas A fazer/Fazendo/Feito e prints para os slides
+B19,Montar slides da entrega definitiva (E-1 + E-2),E-1,Alta,Membro 5,5,B05,Feito,15 slides de docs/09 §9.1 em .key/.pptx/.pdf com notas do apresentador
+B20,Cada membro estudar e explicar a sua parte do código,E-1,Alta,Todos,4,,A fazer,cada um responde às perguntas de docs/09 da sua área
+B21,Expiração automática de reservas pendentes (job agendado),Futuro,Média,Membro 3,4,B12,A fazer,reserva PENDENTE > 10 min é liberada
+B22,Persistir histórico de desfazer (snapshots em JSON),Futuro,Baixa,Membro 3,5,B11,A fazer,desfazer funciona após reinício do serviço
+B23,Testes de front-end (Vitest + Testing Library) e E2E (Playwright),Futuro,Média,Membro 5,8,B14,A fazer,fluxo de compra automatizado no navegador
+B24,Banco persistente (PostgreSQL via Docker Compose) + Flyway,Futuro,Baixa,Membro 2,6,B08,A fazer,dados sobrevivem a reinício
+B25,Relatório de vendas do dia (endpoint no pedido-service),Futuro,Baixa,Membro 4,4,B12,A fazer,GET /api/relatorios/vendas?data=
+B26,Documentação final e diagramas revisados para E-2,E-2,Alta,Membro 1,4,todos,Feito,docs refletem o código final
+B27,Apresentação final com demonstração e resultados de testes,E-2,Alta,Todos,6,B26,A fazer,ensaio cronometrado
+B28,Idempotência de pagamento com várias instâncias (trava no banco ou índice único por pedido aprovado),Futuro,Média,Membro 2,4,B09,A fazer,duas instâncias do pagamento-service não cobram o mesmo pedido duas vezes
+B29,Resolver pedidos em PAGAMENTO_EM_VERIFICACAO sem aprovação (consulta à operadora por id de tentativa ou tela do atendente),Futuro,Média,Membro 3,5,B12,A fazer,pedido em verificação pode ser encerrado com decisão registrada e reserva liberada só com prova de não cobrança
